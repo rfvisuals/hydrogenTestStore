@@ -285,7 +285,7 @@ export async function callUpdateAddressApi({
       id ? `/account/address/${encodeURIComponent(id)}` : '/account/address',
       {
         method: id ? 'PATCH' : 'POST',
-        headers: {
+        s: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },

@@ -4,12 +4,13 @@ import {
   Image,
   Link,
   Money,
-  useMoney,
+  useMoney
 } from '@shopify/hydrogen';
 
-import {Text} from '~/components';
+import {Text,Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
+
 
 export function ProductCard({product, label, className, loading, onClick}) {
   let cardLabel;
@@ -58,10 +59,19 @@ export function ProductCard({product, label, className, loading, onClick}) {
               data={image}
               alt={image.altText || `Picture of ${product.title}`}
               loading={loading}
-            />
-          )}
+            />   
+          )} 
         </div>
-        <div className="grid gap-1">
+        <div>
+          <button
+              type="button"
+              // onClick={alert('Clicked')}
+              className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >
+              <span className="sr-only text-lg">+</span>
+            </button>  
+          </div>
+        <div className="grid gap-1"> 
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
@@ -81,16 +91,13 @@ export function ProductCard({product, label, className, loading, onClick}) {
           </div>
         </div>
       </div>
-    </Link>
+    </Link> 
   );
 }
 
 function CompareAtPrice({data, className}) {
-  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
-    useMoney(data);
-
+  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} = useMoney(data);
   const styles = clsx('strike', className);
-
   return (
     <span className={styles}>
       {currencyNarrowSymbol}

@@ -25,6 +25,7 @@ export function Header({title, menu}) {
 
   const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
+console.log(28, isHome);  
   const {
     isOpen: isCartOpen,
     openDrawer: openCart,
@@ -44,7 +45,7 @@ export function Header({title, menu}) {
       <DesktopHeader
         countryCode={countryCode}
         isHome={isHome}
-        title={title}
+        title={"locale"}
         menu={menu}
         openCart={openCart}
       />
